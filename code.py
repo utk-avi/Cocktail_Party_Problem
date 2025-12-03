@@ -3,47 +3,20 @@ import scipy.io.wavfile
 import os
 
 def update_W(W, x, learning_rate):
-    """
-    Perform a gradient ascent update on W using data element x and the provided learning rate.
-
-    This function should return the updated W.
-
-    Use the laplace distribiution in this problem.
-
-    Args:
-        W: The W matrix for ICA
-        x: A single data element
-        learning_rate: The learning rate to use
-
-    Returns:
-        The updated W
-    """
     
-    # *** START CODE HERE ***
     updated_W = W + learning_rate * (np.linalg.inv(W.T) - np.outer(np.sign(W.dot(x)), x.T))
-    # *** END CODE HERE ***
-
     return updated_W
 
 
 def unmix(X, W):
-    """
-    Unmix an X matrix according to W using ICA.
-
-    Args:
-        X: The data matrix
-        W: The W for ICA
-
-    Returns:
-        A numpy array S containing the split data
-    """
+    
 
     S = np.zeros(X.shape)
 
 
-    # *** START CODE HERE ***
+    
     S = X.dot(W.T)
-    # *** END CODE HERE ***
+    
 
     return S
 
